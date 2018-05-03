@@ -1,7 +1,7 @@
 import { fromEvent } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 
-import { loadWithXhr, loadWithFetch } from './ajax';
+import { loadWithFetch, loadWithNative, loadWithXhr } from './ajax';
 
 interface Movie {
   title: string;
@@ -18,9 +18,9 @@ function renderMovies(movies: Movie[]) {
   });
 }
 
-const siteAddress = window.location.href;
+const fileLocation = window.location.href + 'movies.json';
 
-const xhrSubscription = loadWithXhr(siteAddress + 'movies.json').subscribe(
+const xhrSubscription = loadWithXhr(fileLocation).subscribe(
   renderMovies,
   e => console.error(`Error: ${e}`),
   () => console.info('loadXhr(): done'),
@@ -28,14 +28,14 @@ const xhrSubscription = loadWithXhr(siteAddress + 'movies.json').subscribe(
 
 xhrSubscription.unsubscribe();
 
-loadWithFetch(siteAddress + 'movies.json').subscribe(
+loadWithFetch(fileLocation).subscribe(
   renderMovies,
   e => console.error(`Error: ${e}`),
   () => console.info('loadWithFetch(): done'),
 );
 
 const click = fromEvent(button, 'click')
-  .pipe(flatMap(e => loadWithFetch(siteAddress + 'movies.json')))
+  .pipe(flatMap(e => loadWithNative(fileLocation)))
   .subscribe(
     renderMovies,
     e => console.error(`Error: ${e}`),

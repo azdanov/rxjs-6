@@ -1,5 +1,6 @@
 import { defer, from, Observable, Observer } from 'rxjs';
-import { delay, retryWhen, scan } from 'rxjs/operators';
+import { ajax } from 'rxjs/ajax';
+import { delay, map, retryWhen, scan } from 'rxjs/operators';
 
 export function loadWithXhr(url: string): Observable<any> {
   return Observable.create((observer: Observer<any>) => {
@@ -24,7 +25,7 @@ export function loadWithXhr(url: string): Observable<any> {
       xhr.removeEventListener('load', onLoad);
       xhr.abort();
     };
-  }).pipe(retryWhen(retryStrategy({ times: 3, wait: 2000 })));
+  }).pipe(retryWhen(retryStrategy({ times: 3, wait: 1300 })));
 }
 
 export function loadWithFetch(url: string): Observable<any> {
@@ -38,6 +39,13 @@ export function loadWithFetch(url: string): Observable<any> {
       }),
     );
   }).pipe(retryWhen(retryStrategy({ times: 5, wait: 500 })));
+}
+
+export function loadWithNative(url: string): Observable<any> {
+  return ajax(url).pipe(
+    retryWhen(retryStrategy({ times: 2, wait: 2500 })),
+    map(r => r.response),
+  );
 }
 
 const retryStrategy = ({ times = 4, wait = 1000 }: { times: number; wait: number }) => (
