@@ -1,7 +1,7 @@
 import { fromEvent } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 
-import { loadXhr, loadWithFetch } from './ajax';
+import { loadWithXhr, loadWithFetch } from './ajax';
 
 interface Movie {
   title: string;
@@ -20,7 +20,7 @@ function renderMovies(movies: Movie[]) {
 
 const siteAddress = window.location.href;
 
-const xhrSubscription = loadXhr(siteAddress + 'movies.json').subscribe(
+const xhrSubscription = loadWithXhr(siteAddress + 'movies.json').subscribe(
   renderMovies,
   e => console.error(`Error: ${e}`),
   () => console.info('loadXhr(): done'),
