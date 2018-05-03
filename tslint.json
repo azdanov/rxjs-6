@@ -1,0 +1,27 @@
+{
+  "extends": ["tslint-config-airbnb", "tslint-eslint-rules", "tslint-config-prettier"],
+  "rulesDirectory": ["node_modules/rxjs-tslint", "tslint-plugin-prettier"],
+  "rules": {
+    "prettier": [
+      true,
+      {
+        "printWidth": 89,
+        "tabWidth": 2,
+        "useTabs": false,
+        "semi": true,
+        "singleQuote": true,
+        "trailingComma": "all",
+        "bracketSpacing": true,
+        "jsxBracketSameLine": false
+      }
+    ],
+    "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case"],
+    "no-unused-variable": true,
+    "import-name": false,
+    "no-increment-decrement": false,
+    "rxjs-collapse-imports": true,
+    "rxjs-pipeable-operators-only": true,
+    "rxjs-no-static-observable-methods": true,
+    "rxjs-proper-imports": true
+  }
+}
