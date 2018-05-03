@@ -2,7 +2,7 @@
 
 Trying out rxjs v6 with typescript.
 
-There are thre function [loadWithXhr](https://github.com/azdanov/rxjs-6/blob/a849870b532f34dca016c80277b706de05749eb3/src/ajax.ts#L5), [loadWithFetch](https://github.com/azdanov/rxjs-6/blob/a849870b532f34dca016c80277b706de05749eb3/src/ajax.ts#L31) and [loadWithNative](https://github.com/azdanov/rxjs-6/blob/a849870b532f34dca016c80277b706de05749eb3/src/ajax.ts#L44) which implement ajax by using different rxjs capabilities.
+There are three function [loadWithXhr](https://github.com/azdanov/rxjs-6/blob/a849870b532f34dca016c80277b706de05749eb3/src/ajax.ts#L5), [loadWithFetch](https://github.com/azdanov/rxjs-6/blob/a849870b532f34dca016c80277b706de05749eb3/src/ajax.ts#L31) and [loadWithNative](https://github.com/azdanov/rxjs-6/blob/a849870b532f34dca016c80277b706de05749eb3/src/ajax.ts#L44) which implement ajax by using different rxjs capabilities.
 
 [Live](https://azdanov.js.org/rxjs-6/)
 
@@ -22,7 +22,7 @@ I've used [yarn](https://github.com/yarnpkg/yarn) as a package manager, [npm](ht
 
 `yarn run develop` - start a local server on `http://localhost:1234/` by using [parcel](https://github.com/parcel-bundler/parcel).
 
-`yarn run build` - build for production with minified output.
+`yarn run build` - build for production with a minified output.
 
 ## License
 
