@@ -1,7 +1,7 @@
 import { defer, from, Observable, Observer } from 'rxjs';
 import { delay, retryWhen, scan } from 'rxjs/operators';
 
-export function loadXhr(url: string): Observable<any> {
+export function loadWithXhr(url: string): Observable<any> {
   return Observable.create((observer: Observer<any>) => {
     const xhr = new XMLHttpRequest();
 
