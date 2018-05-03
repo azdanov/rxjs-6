@@ -18,7 +18,9 @@ function renderMovies(movies: Movie[]) {
   });
 }
 
-const xhrSubscription = loadXhr('movies.json').subscribe(
+const siteAddress = window.location.href;
+
+const xhrSubscription = loadXhr(siteAddress + 'movies.json').subscribe(
   renderMovies,
   e => console.error(`Error: ${e}`),
   () => console.info('loadXhr(): done'),
@@ -26,14 +28,14 @@ const xhrSubscription = loadXhr('movies.json').subscribe(
 
 xhrSubscription.unsubscribe();
 
-loadWithFetch('movies.json').subscribe(
+loadWithFetch(siteAddress + 'movies.json').subscribe(
   renderMovies,
   e => console.error(`Error: ${e}`),
   () => console.info('loadWithFetch(): done'),
 );
 
 const click = fromEvent(button, 'click')
-  .pipe(flatMap(e => loadWithFetch('movies.json')))
+  .pipe(flatMap(e => loadWithFetch(siteAddress + 'movies.json')))
   .subscribe(
     renderMovies,
     e => console.error(`Error: ${e}`),
